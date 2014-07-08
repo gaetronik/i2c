@@ -47,6 +47,7 @@ module I2C
       ret=""
       @device.ioctl(IC_SLAVE,address)
       ret=@device.sysread(1)
+      return ret
     end
     private
     def initialize(device_path)
