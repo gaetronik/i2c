@@ -43,7 +43,11 @@ module I2C
       ret = @device.sysread(size)
       return ret
     end
-
+    def read_byte(address)
+      ret=""
+      @device.ioctl(IC_SLAVE,address)
+      ret=@device.sysread(1)
+    end
     private
     def initialize(device_path)
       @device = File.new(device_path, 'r+')
